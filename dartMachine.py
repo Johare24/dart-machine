@@ -80,7 +80,7 @@ class Window(Frame):
             #Player has entered a score which will result in a finish if valid
             elif(proposedScore == 0):
                 #player enters invalid finish
-                if (hit in self.impossibleFinishes):
+                if (hit in self.impossibleFinishes or hit > 170):
                     self.statusString.set("Finish not possible")
                 #player finishes with valid score
                 else:
