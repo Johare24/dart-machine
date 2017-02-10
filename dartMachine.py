@@ -16,14 +16,15 @@ class Window(Frame):
     def initWindow(self):
         self.master.title("Dart Machine")
         self.grid()
+        self.gameType = "none"
 
         #Buttons
         scorePress = Button(self, text = "Submit", command = self.subScore)
         scorePress.grid(column = 1, row = 0, padx=5, pady=5)
         #Entry initialize
         self.scoreIn = StringVar()
-        turnScore = Entry(self, width = 8, textvariable = self.scoreIn)
-        turnScore.grid(column=0, row = 0)
+        self.turnScore = Entry(self, width = 8, textvariable = self.scoreIn)
+        self.turnScore.grid(column=0, row = 0)
         #Labels
         playerLabel = Label(self, text = "Player Score")
         playerLabel.grid(column = 0, row = 1)
@@ -49,14 +50,16 @@ class Window(Frame):
         menu.add_cascade(label = "File", menu = file)
 
         gameBar = Menu(menu)
-        gameBar.add_command(label = "Start 501", command = self.startFive)
+        gameBar.add_command(label = "Single 501", command = self.startSinglesFive)
         menu.add_cascade(label = "Games", menu = gameBar)
 
-    def startFive(self):
+
+    def startSinglesFive(self):
         self.pScore.set("501")
-        self.cScore.set("501")
+        #self.cScore.set("501")
         self.playerInt = 501
-        self.compInt = 501
+        #self.compInt = 501
+        self.statusString.set("Signles 501")
 
         #Scores not possible with 3 darts
         self.impossibleScores = [179, 178, 176, 175, 173, 172, 169, 166, 163, 159]
@@ -90,6 +93,7 @@ class Window(Frame):
             #unforseen case
             else:
                 self.statusString.set("Enter a valid score")
+            self.turnScore.delete(0, END)
 
 
     def clientExit(self):
