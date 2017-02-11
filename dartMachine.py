@@ -25,6 +25,7 @@ class Window(Frame):
         self.scoreIn = StringVar()
         self.turnScore = Entry(self, width = 8, textvariable = self.scoreIn)
         self.turnScore.grid(column=0, row = 0)
+        self.turnScore.bind("<Return>", self.onPressReturn)
         #Labels
         playerLabel = Label(self, text = "Player Score")
         playerLabel.grid(column = 0, row = 1)
@@ -56,15 +57,17 @@ class Window(Frame):
 
     def startSinglesFive(self):
         self.pScore.set("501")
-        #self.cScore.set("501")
         self.playerInt = 501
-        #self.compInt = 501
         self.statusString.set("Signles 501")
+        self.gameType = "501"
 
         #Scores not possible with 3 darts
         self.impossibleScores = [179, 178, 176, 175, 173, 172, 169, 166, 163, 159]
         #Finishes not possible with 3 darts
         self.impossibleFinishes = [169, 168, 166, 165, 163, 162, 159]
+
+    def onPressReturn(self, event):
+        self.subScore()
 
     def subScore(self):
             hit = int(self.scoreIn.get())
@@ -94,6 +97,7 @@ class Window(Frame):
             else:
                 self.statusString.set("Enter a valid score")
             self.turnScore.delete(0, END)
+
 
 
     def clientExit(self):
