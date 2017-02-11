@@ -58,8 +58,8 @@ class Window(Frame):
     def startSinglesFive(self):
         self.pScore.set("501")
         self.playerInt = 501
-        self.statusString.set("Signles 501")
-        self.gameType = "501"
+        self.statusString.set("Singles 501")
+        self.gameType = "s501"
 
         #Scores not possible with 3 darts
         self.impossibleScores = [179, 178, 176, 175, 173, 172, 169, 166, 163, 159]
