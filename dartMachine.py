@@ -19,24 +19,24 @@ class Window(Frame):
         self.gameType = "none"
 
         #Buttons
-        scorePress = Button(self, text = "Submit", command = self.subScore)
+        scorePress = Button(self, text = "Submit", command = self.subScore, font='helvetica 20')
         scorePress.grid(column = 1, row = 0, padx=5, pady=5)
         #Entry initialize
         self.scoreIn = StringVar()
-        self.turnScore = Entry(self, width = 8, textvariable = self.scoreIn)
+        self.turnScore = Entry(self, width = 3, textvariable = self.scoreIn, font='helvetica 30')
         self.turnScore.grid(column=0, row = 0)
         self.turnScore.bind("<Return>", self.onPressReturn)
         #Labels
-        playerLabel = Label(self, text = "Player Score")
+        playerLabel = Label(self, text = "Player", font = 'helvetica 36')
         playerLabel.grid(column = 0, row = 1)
         self.pScore = StringVar()
-        playerDisp = Label(self, textvariable = self.pScore)
+        playerDisp = Label(self, textvariable = self.pScore, font='helvetica 30')
         playerDisp.grid(column = 1, row = 1, padx=5, pady=5)
 
-        compLabel = Label(self, text = "CPU Score")
+        compLabel = Label(self, text = "Opponent", font = 'helvetica 36')
         compLabel.grid(column = 0, row = 2, padx=5, pady=5)
         self.cScore = StringVar()
-        compDisp = Label(self, textvariable = self.cScore)
+        compDisp = Label(self, textvariable = self.cScore, font='helvetica 30')
         compDisp.grid(column= 1, row = 2)
 
         self.statusString = StringVar()
