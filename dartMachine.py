@@ -60,8 +60,9 @@ class Window(Frame):
         self.playerInt = 501
         self.statusString.set("Singles 501")
         self.gameType = "s501"
+        self.legDart = []
 
-        #Scores not possible with 3 darts
+        #Scores nroot.iconbitmap('')ot possible with 3 darts
         self.impossibleScores = [179, 178, 176, 175, 173, 172, 169, 166, 163, 159]
         #Finishes not possible with 3 darts
         self.impossibleFinishes = [169, 168, 166, 165, 163, 162, 159]
@@ -79,10 +80,12 @@ class Window(Frame):
             #Player enters a score which will bust them
             elif(proposedScore < 0 or proposedScore == 1):
                 self.statusString.set("Player has bust")
+                self.legDart.append(0)
             #Normal scoring conditions (no bust and score is possible)
             elif(proposedScore > 1):
                 self.playerInt = proposedScore
                 self.pScore.set(str(proposedScore))
+                self.legDart.append(hit)
             #Player has entered a score which will result in a finish if valid
             elif(proposedScore == 0):
                 #player enters invalid finish
@@ -93,12 +96,15 @@ class Window(Frame):
                     self.statusString.set("Player has won the leg")
                     self.playerInt = proposedScore
                     self.pScore.set(str(proposedScore))
+                    self.legDart.append(hit)
+                    self.writeLeg(self.legDart, 3)
             #unforseen case
             else:
                 self.statusString.set("Enter a valid score")
             self.turnScore.delete(0, END)
 
-
+    def writeLeg(self, leg, finish):
+        print(sum(leg)/len(leg))
 
     def clientExit(self):
         self.master.destroy()
