@@ -104,7 +104,19 @@ class Window(Frame):
             self.turnScore.delete(0, END)
 
     def writeLeg(self, leg, finish):
-        print(sum(leg)/len(leg))
+        saveFile = open("legs.drt", "a")
+        saveFile.write(str(leg) + "\n")
+        saveFile.close()
+
+    def readLeg(self):
+        saveFile = open("legs.drt", "r")
+        dirLg = saveFile.readlines()
+        saveFile.close()
+        #returns as a list containing the list at [0]
+        useLg = eval(dirLg[0])
+        print(useLg)
+
+
 
     def clientExit(self):
         self.master.destroy()
